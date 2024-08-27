@@ -1,7 +1,7 @@
 from selenium.common.exceptions import NoAlertPresentException
 from stepik_auto_tests_project.pages.base_page import BasePage
 from stepik_auto_tests_project.pages.locators import ProductPageLocators
-from selenium.webdriver.common.by import By
+#from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
@@ -13,10 +13,9 @@ class ProductPage(BasePage):
         self.should_be_add_to_basket_button()
         link = self.browser.find_element(*ProductPageLocators.ADD_BASKET)
         link.click()
-        self.solve_quiz_and_get_code()
+        #self.solve_quiz_and_get_code()
         self.should_be_added_book_name_message()
         self.should_be_correct_book_name()
-        #self.should_be_added_book_price_message()
         self.should_be_correct_book_price()
 
     def should_be_add_to_basket_button(self):
@@ -56,4 +55,19 @@ class ProductPage(BasePage):
         print(f"book name page: {book_name_page_text}, book name message: {book_name_message_text}")
         assert book_name_page_text == book_name_message_text, "The name of the product in the message matches the added"
 
-        
+
+    def should_not_be_success_message_after_adding_product_to_basket(self):
+        link = self.browser.find_element(*ProductPageLocators.ADD_BASKET)
+        link.click()
+        assert self.is_not_element_present(*ProductPageLocators.BASKET_PRODUCT_NAME), "element visible"
+
+    def should_not_cant_see_success_message(self):
+        link = self.browser.find_element(*ProductPageLocators.ADD_BASKET)
+        assert self.is_not_element_present(*ProductPageLocators.BASKET_PRODUCT_NAME), "element visible"
+                                   
+    def should_not_be_success_message_disappeared(self):
+        link = self.browser.find_element(*ProductPageLocators.ADD_BASKET)
+        link.click()
+        assert self.is_disappeared(*ProductPageLocators.BASKET_PRODUCT_NAME), "element visible"
+
+

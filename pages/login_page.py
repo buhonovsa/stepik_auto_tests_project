@@ -1,5 +1,8 @@
 from stepik_auto_tests_project.pages.base_page import BasePage
 from stepik_auto_tests_project.pages.locators import LoginPageLocators
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
 
 class LoginPage(BasePage):
     def should_be_login_page(self):
@@ -9,15 +12,19 @@ class LoginPage(BasePage):
 
     def should_be_login_url(self):
         assert "login" in self.browser.current_url, "Login link is not presented"
-        # реализуйте проверку на корректный url адрес
-        #assert True
 
     def should_be_login_form(self):
         assert self.is_element_present(*LoginPageLocators.LOGIN_FORM), "Login form is not presented"
-        # реализуйте проверку, что есть форма логина
-        #assert True
 
     def should_be_register_form(self):
         assert self.is_element_present(*LoginPageLocators.FORM_REG), "Login registration is not presented"
-        # реализуйте проверку, что есть форма регистрации на странице
-        #assert True
+
+    def register_new_user(self, email, password):
+        email_field = self.browser.find_element(*LoginPageLocators.EMAIL)
+        email_field.send_keys(email)
+        password1 = self.browser.find_element(*LoginPageLocators.PWD_REG)
+        password1.send_keys(password)
+        password2 = self.browser.find_element(*LoginPageLocators.PWD_REG_CONFIRM)
+        password2.send_keys(password)
+        btn_reg = self.browser.find_element(*LoginPageLocators.BUTTON_REG)
+        btn_reg.click()

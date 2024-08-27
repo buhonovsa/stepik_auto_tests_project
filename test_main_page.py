@@ -1,6 +1,9 @@
-from stepik_auto_tests_project.pages.main_page import BasePage
-from stepik_auto_tests_project.pages.login_page import LoginPage
-from stepik_auto_tests_project.pages.basket_page import BasketPage
+#from stepik_auto_tests_project.pages.main_page import BasePage
+#from stepik_auto_tests_project.pages.login_page import LoginPage
+#from stepik_auto_tests_project.pages.basket_page import BasketPage
+from pages.main_page import BasePage
+from pages.login_page import LoginPage
+from pages.basket_page import BasketPage
 import pytest
 
 @pytest.mark.login_guest

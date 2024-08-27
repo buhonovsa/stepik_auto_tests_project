@@ -1,7 +1,8 @@
+#from stepik_auto_tests_project.pages.base_page import BasePage
+#from stepik_auto_tests_project.pages.locators import ProductPageLocators
+from pages.base_page import BasePage
+from pages.locators import ProductPageLocators
 from selenium.common.exceptions import NoAlertPresentException
-from stepik_auto_tests_project.pages.base_page import BasePage
-from stepik_auto_tests_project.pages.locators import ProductPageLocators
-#from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time

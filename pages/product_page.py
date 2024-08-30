@@ -1,7 +1,5 @@
-#from stepik_auto_tests_project.pages.base_page import BasePage
-#from stepik_auto_tests_project.pages.locators import ProductPageLocators
-from pages.base_page import BasePage
-from pages.locators import ProductPageLocators
+from .base_page import BasePage
+from .locators import ProductPageLocators
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -14,10 +12,15 @@ class ProductPage(BasePage):
         self.should_be_add_to_basket_button()
         link = self.browser.find_element(*ProductPageLocators.ADD_BASKET)
         link.click()
-        #self.solve_quiz_and_get_code()
+        self.solve_quiz_and_get_code()
         self.should_be_added_book_name_message()
         self.should_be_correct_book_name()
         self.should_be_correct_book_price()
+
+    def add_to_basket(self):
+        self.should_be_add_to_basket_button()
+        link = self.browser.find_element(*ProductPageLocators.ADD_BASKET)
+        link.click()
 
     def should_be_add_to_basket_button(self):
         assert self.is_element_present(*ProductPageLocators.ADD_BASKET), "Button add to basket is not on the page"

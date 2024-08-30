@@ -1,7 +1,5 @@
-#from stepik_auto_tests_project.pages.base_page import BasePage
-#from stepik_auto_tests_project.pages.locators import BasketPageLocators
-from pages.base_page import BasePage
-from pages.locators import BasketPageLocators
+from .base_page import BasePage
+from .locators import BasketPageLocators
 
 class BasketPage(BasePage):
     
